@@ -1,10 +1,10 @@
 module.exports.createTransactionEngine = ({ db }) => {
 
     const transaction = Transaction.bind(null, { db });
-    const get = Get.bind(null, {db});
-    const getById = GetById.bind(null, {db});
+    const get = Get.bind(null, { db });
+    const getById = GetById.bind(null, { db });
 
-    return { transaction, get, getById }
+    return { transaction, get, getById };
 
     async function Transaction(injections, transaction) {
         const { db } = injections;
@@ -22,4 +22,4 @@ module.exports.createTransactionEngine = ({ db }) => {
         const { db } = injections;
         return await db.findById(id);
     }
-}
+};
