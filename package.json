@@ -1,0 +1,25 @@
+{
+  "name": "debit-credit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2"
+  },
+  "scripts": {
+    "test": "mocha src/tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reyesdiego/debit-credit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reyesdiego/debit-credit/issues"
+  },
+  "homepage": "https://github.com/reyesdiego/debit-credit#readme"
+}
