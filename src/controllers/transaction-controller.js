@@ -16,8 +16,22 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.get = async (req, res) => {
+    let result = [];
+
+    const { limit, begin, end } = req.query;
     try {
-        res.send(await transactionEngine.get());
+        if (Object.keys(req.query).length) {
+            result = await transactionEngine.get({ limit, begin, end });
+        }
+        res.send(result);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+};
+
+module.exports.getById = async (req, res) => {
+    try {
+        res.send(await transactionEngine.getById(req.params.id));
     } catch (err) {
         res.status(500).send(err.message);
     }

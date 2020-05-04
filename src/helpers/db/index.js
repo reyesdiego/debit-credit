@@ -1,5 +1,6 @@
 /* eslint-disable no-return-assign */
 // FAKING DB
+const { v4: uuidv4 } = require('uuid');
 
 class db {
 
@@ -8,7 +9,7 @@ class db {
     }
 
     insert(transaction) {
-        const row = { ...transaction, effectiveDate: new Date() };
+        const row = { ...transaction, id: uuidv4(), effectiveDate: new Date() };
         this.transactions.push(row);
         return Promise.resolve(row);
     }
