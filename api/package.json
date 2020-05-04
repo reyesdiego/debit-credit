@@ -23,7 +23,8 @@
     "mocha": "^7.1.2"
   },
   "scripts": {
-    "test": "mocha src/tests"
+    "test": "mocha src/tests",
+    "dev": "PORT=3001 node src/."
   },
   "repository": {
     "type": "git",

@@ -20,7 +20,7 @@ module.exports.createTransactionEngine = ({ db }) => {
             throw new Error('Out of credit');
         }
 
-        return await db.insert({ amount, type, description });
+        return await db.insert({ amount, type, description, balance });
     }
 
     async function Get(injections) {
