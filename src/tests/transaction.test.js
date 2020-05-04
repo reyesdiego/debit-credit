@@ -5,7 +5,7 @@ const expect = require('chai').expect;
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
-const { createTransactionEngine } = require('../services/transaction');
+const { createTransactionEngine } = require('../services/transaction-service');
 
 describe('TRANSACTIONS', function () {
     it('Should Pass (dummy test)', function () {
