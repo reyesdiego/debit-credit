@@ -1,0 +1,12 @@
+
+GET http://localhost:3000/api-v1
+
+###
+POST http://localhost:3000/api-v1/transactions
+Content-Type: application/json
+
+{
+    "amount": 21,
+    "type": "debit",
+    "description": "Rent Payment"
+}
