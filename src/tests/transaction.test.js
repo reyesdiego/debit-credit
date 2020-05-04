@@ -26,4 +26,20 @@ describe('TRANSACTIONS', function () {
         expect(response).to.haveOwnProperty('amount', transaction.amount);
 
     })
+
+    it('Should get Transactions', async function () {
+        const transactions = [{
+            amount: -10,
+            description: 'Rent',
+            type: 'debit'
+        }];
+        const db = {
+            find: () => {
+                return Promise.resolve(transactions);
+            }
+        }
+        const transaction = createTransactionEngine({ db });
+        const response = await transaction.get();
+        expect(response).to.have.length(1);
+    })
 });
