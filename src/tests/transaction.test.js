@@ -7,11 +7,18 @@ describe('TRANSACTIONS', function () {
         expect(1).to.eq(1);
     })
     it('should insert Debit Transaction', function () {
-        const transactionEngine = createTransactionEngine();
+        const db = {
+            insert: transaction => {
+
+            }
+        }
         const transaction = {
             amount: 10,
             type: 'debit'
         };
-        transactionEngine.transaction(transaction);
+        const transactionEngine = createTransactionEngine({ db });
+        const response = transactionEngine.transaction(transaction);
+        expect(response).to.haveOwnProperty('amount', transaction.amount);
+
     })
 });
