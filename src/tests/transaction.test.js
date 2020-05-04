@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const createTransactionEngine = require('../services/transaction');
+const {createTransactionEngine} = require('../services/transaction');
 
 describe('TRANSACTIONS', function () {
     it('Should Pass (dummy test)', function () {
