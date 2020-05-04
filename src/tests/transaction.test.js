@@ -1,6 +1,9 @@
 /* eslint-disable max-lines-per-function */
 /* eslint-disable no-undef */
+const chai = require('chai');
 const expect = require('chai').expect;
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 const { createTransactionEngine } = require('../services/transaction');
 
@@ -9,7 +12,29 @@ describe('TRANSACTIONS', function () {
         expect(1).to.eq(1);
     });
 
-    it('should insert Debit Transaction', async function () {
+    it('insert transaction Debit should return Out of credit', async function () {
+        const transaction = {
+            amount: 10,
+            description: 'Rent',
+            type: 'debit'
+        };
+        const db = {
+            insert: transaction => {
+                expect(transaction).to.haveOwnProperty('amount');
+                expect(transaction).to.haveOwnProperty('type');
+                expect(transaction).to.haveOwnProperty('description');
+                return Promise.resolve(transaction);
+            },
+            balance: () => {
+                return Promise.resolve(0);
+            }
+        };
+        const balance = createTransactionEngine({ db });
+        await expect(balance.transaction(transaction)).to.be.rejected;
+
+    });
+
+    it('should insert Credit Transaction', async function () {
         const db = {
             insert: transaction => {
                 expect(transaction).to.haveOwnProperty('amount');
@@ -17,16 +42,21 @@ describe('TRANSACTIONS', function () {
                 expect(transaction).to.haveOwnProperty('description');
                 return Promise.resolve(transaction);
 
+            },
+            balance: () => {
+                return Promise.resolve(0);
             }
         };
         const transaction = {
-            amount: 10,
-            type: 'debit',
-            description: 'Rent'
+            amount: 1000,
+            type: 'creadit',
+            description: 'Salary'
         };
         const transactionEngine = createTransactionEngine({ db });
         const response = await transactionEngine.transaction(transaction);
         expect(response).to.haveOwnProperty('amount', transaction.amount);
+        expect(response).to.haveOwnProperty('type', transaction.type);
+        expect(response).to.haveOwnProperty('description', transaction.description);
 
     });
 

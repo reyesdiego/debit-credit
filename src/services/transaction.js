@@ -8,7 +8,17 @@ module.exports.createTransactionEngine = ({ db }) => {
 
     async function Transaction(injections, transaction) {
         const { db } = injections;
-        const { type, description, amount } = transaction;
+        const { type, description } = transaction;
+        let { amount } = transaction;
+
+        if (type === 'debit') {
+            amount *= -1;
+        }
+        let balance = await db.balance();
+        balance += amount;
+        if (balance < 0) {
+            throw new Error('Out of credit');
+        }
 
         return await db.insert({ amount, type, description });
     }
