@@ -1,3 +1,8 @@
 module.exports.createTransactionEngine = () => {
-    return true;
+
+    return { transaction }
+
+    function transaction(transaction) {
+        return transaction;
+    }
 }
