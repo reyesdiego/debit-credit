@@ -35,8 +35,7 @@ module.exports = () => {
         await app.listen(PORT);
         console.log(`API running on port ${PORT}. (${process.version}) pid:${
             process.pid
-            } - ${new Date()}`
-        );
+            } - ${new Date()}`);
     })();
 
     return app;

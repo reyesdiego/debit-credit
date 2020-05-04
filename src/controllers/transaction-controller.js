@@ -15,3 +15,12 @@ module.exports.create = async (req, res) => {
     }
 };
 
+module.exports.get = async (req, res) => {
+    try {
+        res.send(await transactionEngine.get());
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+};
+
+

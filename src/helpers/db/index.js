@@ -14,7 +14,7 @@ class db {
     }
 
     find() {
-        return Promise.resolve(this.transactions);
+        return Promise.resolve(this.transactions.sort((pre, next) => pre.effectiveDate < next.effectiveDate));
     }
 
     findById(id) {
