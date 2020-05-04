@@ -4,7 +4,10 @@ module.exports.createTransactionEngine = ({ db }) => {
 
     return { transaction }
 
-    function Transaction({ db }, transaction) {
-        return transaction;
+    async function Transaction(injections, transaction) {
+        const { db } = injections;
+        const { type, description, amount } = transaction;
+
+        return await db.insert({ amount, type, description });
     }
 }
