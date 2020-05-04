@@ -6,8 +6,8 @@ POST http://localhost:3001/api-v1/transactions
 Content-Type: application/json
 
 {
-    "amount": 21,
-    "type": "credit",
+    "amount": 65,
+    "type": "debit",
     "description": "Rent Payment"
 }
 
