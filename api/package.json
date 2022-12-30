@@ -20,7 +20,7 @@
     "chai-as-promised": "^7.1.1",
     "eslint": "^6.8.0",
     "ghooks": "^2.0.4",
-    "mocha": "^7.1.2"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "test": "mocha src/tests",
